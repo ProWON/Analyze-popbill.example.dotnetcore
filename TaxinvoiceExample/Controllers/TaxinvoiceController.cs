@@ -7,10 +7,18 @@ namespace TaxinvoiceExample.Controllers
 {
     public class TaxinvoiceController : Controller
     {
+        // 값을 바꿀수 없는 const와 유사해 보이지만 const와 다르게 compile 시점에 값을 확정하지 않음
+        // readonly는 프로그램이 메모리에 올라가는 runtime 시점에 이르러서야 값을 확정
+        // 아무튼 readonly도 상수임
         private readonly TaxinvoiceService _taxinvoiceService;
 
+        // Dependency injection
+        // Stratup의 AddSingtone()으로 TaxinvoiceInstance DI 설정 했고 여기서 Inject 받음
+        // TaxinvoiceController 클래스를 만들때 TaxinvoiceController에서 의존하고 있는 TaxinvoiceInstance 를 생성하는것이 아니라 주입한다
         public TaxinvoiceController(TaxinvoiceInstance TIinstance)
         {
+            // inject받은 TaxinvoiceInstance에서 생성한 taxinvoiceService 사용
+            // Dependancy Injection을 사용하는 인터페이스와 클래스는 항상 Public으로 설정해야함
             // 세금계산서 서비스 객체 생성
             _taxinvoiceService = TIinstance.taxinvoiceService;
         }
