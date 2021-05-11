@@ -32,6 +32,9 @@ namespace TaxinvoiceExample.Controllers
         /*
          * 전자세금계산서 Index page (Taxinvoice/Index.cshtml)
          */
+         //[Route("")]
+         //[Route("/")]
+         //[Route("/Taxinvoice/Indx")]처럼 사용할 수 있음,  app.Usemvc의 route 비워놓고
         public IActionResult Index()
         {
             return View();

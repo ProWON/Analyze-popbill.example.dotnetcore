@@ -102,9 +102,16 @@ namespace TaxinvoiceExample
 
             app.UseMvc(routes =>
             {
+                // MapRoute 메서드를 이용해서 default 라는 단일 라우트를 생성
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Taxinvoice}/{action=Index}");
+                    // /Home/index 과 동일
+                    // HomeController라는 이름의 컨트롤러를 찾아서 Index액션을 실행하려 시도하게됨
+                    template: "{controller=Taxinvoice}/{action=Index}"); // 라우트 템플릿에 맞춰서 작성
+                    // 첫번째 경로 세그먼트를 컨트롤러이름에 매핑
+                    // 두번째 경로 세그먼트를 액션 이름에 매핑
+                    // 세번째 세그먼트는 모델 엔터티에 매핑되는 선택적 id
+                    // /Taxinvoice/RegistIssue Taxinvoice.RegistIssue에 매핑
             });
         }
     }
